@@ -16,10 +16,10 @@ public class UserResponse {
     private String lastName;
     private String email;
     private String phoneNumber;
+    private String document;
     private String address;
     private String city;
     private Long postalCode;
-    private Date created;
     private Role role;
     private CartResponse cartResponse;
 }

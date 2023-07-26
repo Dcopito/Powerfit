@@ -33,11 +33,8 @@ public class UserServiceImp implements UserService {
     @Override
     public UserResponse updateUser(UserRequest updateRequest) {
         boolean isUserExists = IUserRepository.existsById(updateRequest.getId());
-        boolean isEmailExist = IUserRepository.existsByEmail(updateRequest.getEmail());
         if(!isUserExists){
             throw new EntityNotFoundException("User does not exist");
-        }else if(isEmailExist){
-            throw new UserAlreadyExistException("Email is already in use");
         }else{
             User userUpdate = userMapper.updateToDto(updateRequest);
             IUserRepository.save(userUpdate);
