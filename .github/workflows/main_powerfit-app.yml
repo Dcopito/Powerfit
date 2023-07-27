@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'powerfit-app'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A1BDE8260D3D40E18BC4CAFD35B23588 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EE7CCA3B87F84B3886A9EBB0297399C9 }}
           package: '*.jar'
