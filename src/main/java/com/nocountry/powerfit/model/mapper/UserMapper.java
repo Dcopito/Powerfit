@@ -38,9 +38,14 @@ public class UserMapper {
     public User updateToDto(UserRequest updateRequest){
         return User.builder()
                 .id(updateRequest.getId())
+                .password(updateRequest.getPassword())
+                .email(updateRequest.getEmail())
+                .name(updateRequest.getName())
+                .lastName(updateRequest.getLastName())
                 .postalCode(updateRequest.getPostalCode())
                 .city(updateRequest.getCity())
                 .address(updateRequest.getAddress())
+                .phoneNumber(updateRequest.getPhoneNumber())
                 .document(updateRequest.getDocument())
                 .role(Role.USER)
                 .build();

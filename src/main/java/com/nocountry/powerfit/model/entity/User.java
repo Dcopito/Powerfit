@@ -47,8 +47,6 @@ public class User implements UserDetails {
     @NotNull(message = "Email can't be null.")
     private String email;
 
-    @NotNull(message = "Password can't be null")
-    @Size(min = 8, max = 250, message = "Password should have at least 8 characters")
     private String password;
 
     @NotNull(message = "Phone number can't be null.")
