@@ -47,7 +47,6 @@ public class UserMapper {
                 .address(updateRequest.getAddress())
                 .phoneNumber(updateRequest.getPhoneNumber())
                 .document(updateRequest.getDocument())
-                .role(Role.USER)
                 .build();
     }
 

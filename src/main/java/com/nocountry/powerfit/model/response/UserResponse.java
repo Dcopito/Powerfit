@@ -16,9 +16,9 @@ public class UserResponse {
     private String lastName;
     private String email;
     private String phoneNumber;
-    private String document;
     private String address;
     private String city;
+    private String document;
     private Long postalCode;
     private Role role;
     private CartResponse cartResponse;

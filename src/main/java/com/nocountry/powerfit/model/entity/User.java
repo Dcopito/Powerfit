@@ -47,6 +47,8 @@ public class User implements UserDetails {
     @NotNull(message = "Email can't be null.")
     private String email;
 
+    @NotNull(message = "Password can't be null")
+    @Size(min = 8, max = 250, message = "Password should have at least 8 characters")
     private String password;
 
     @NotNull(message = "Phone number can't be null.")
@@ -65,9 +67,6 @@ public class User implements UserDetails {
     @JoinColumn(name="image_id")
     @OneToOne(cascade = CascadeType.REFRESH)
     private Image image;
-
-    @OneToMany(mappedBy = "user")
-    private List<Bill> bill;
 
     @Enumerated(EnumType.STRING)
     private Role role;
