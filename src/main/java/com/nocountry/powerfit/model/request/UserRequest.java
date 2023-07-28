@@ -13,7 +13,7 @@ public class UserRequest {
     private Long id;
     private String address;
     private Long postalCode;
-    private String document;
+    private Long document;
     private String city;
     private String password;
     private String email;
