@@ -56,7 +56,7 @@ public class PreferenceServiceImpl implements PreferenceService {
         PreferencePayerRequest payerRequest = PreferencePayerRequest.builder()
 
                 .name("Abel")
-                .email("user@gmail.com")
+                .email("marzoa3581@gmail.com")
 
                 .address(AddressRequest.builder()
                         .streetName("Garin")
@@ -72,13 +72,13 @@ public class PreferenceServiceImpl implements PreferenceService {
                 .pending("http://localhost:4200/payment/pending") // <-- También se cambia la URL de pendiente a la URL de respuesta genérica
                 .build();
 
-        String notification = "https://a604-2800-810-50c-4cc-98f9-67c2-6b92-4531.ngrok.io/api/v1/preferences/notification";
+       // String notification = "https://a604-2800-810-50c-4cc-98f9-67c2-6b92-4531.ngrok.io/api/v1/preferences/notification";
 
         com.mercadopago.client.preference.PreferenceRequest preferenceRequest = com.mercadopago.client.preference.PreferenceRequest.builder()
                 .items(items)
                 .payer(payerRequest)
                 .backUrls(backUrls)
-                .notificationUrl(notification)
+               // .notificationUrl(notification)
                 .binaryMode(true)
                 .autoReturn("approved")
                 .build();
@@ -88,8 +88,28 @@ public class PreferenceServiceImpl implements PreferenceService {
         return response;
     }
 
+    @Override
+    public Preference createPreferenceList(List<PreferenceRequest> requestList) {
+        MercadoPagoConfig.setAccessToken(mercadoPagoAccessToken);
 
+        // Crea una lista para almacenar los items de la preferencia
+        List<PreferenceItemRequest> items = new ArrayList<>();
 
+        // Recorre la lista de request y crea los items para la preferencia
+        for (PreferenceRequest it : requestList) {
+            PreferenceItemRequest item = PreferenceItemRequest.builder()
+                    .id(String.valueOf(it.getId()))
+                    .title(it.getName())
+                    .description(it.getDescription())
+                    .unitPrice(it.getPrice())
+                    .currencyId("ARS")
+                    .quantity(it.getQuantity())
+                    .pictureUrl(it.getPictureUrl())
+                    .build();
+            items.add(item);
+        }
+        return null;
+    }
 
 
 
