@@ -23,7 +23,22 @@ public class SecurityConfig{
         http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests().anyRequest().permitAll()
+                .authorizeRequests()
+                //Auth
+                .antMatchers("/api/v1/auth/**").permitAll()
+                //Categories
+                .antMatchers("/api/v1/categories/all").permitAll()
+                .antMatchers("/api/v1/categories/{name}").permitAll()
+                .antMatchers("/api/v1/categories/{id}").permitAll()
+                //Products
+                .antMatchers("/api/v1/products/all").permitAll()
+                .antMatchers("/api/v1/products/category/{categoryName}").permitAll()
+                .antMatchers("/api/v1/products/name/{productName}").permitAll()
+                .antMatchers("/api/v1/products/{id}").permitAll()
+                //Utils
+                .antMatchers("/api/v1/categories/").permitAll()
+                .antMatchers("/swagger-ui.html").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
